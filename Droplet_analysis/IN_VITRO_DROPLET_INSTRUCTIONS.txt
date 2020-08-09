@@ -1,0 +1,68 @@
+2019-02-12 Directions to run in vitro droplet assay analysis
+
+## RUNNING PROGRAM
+
+
+    To run the script, run the following function with required and optional arguments (detailed below)
+
+    Without options:
+        $ ./in_vitro_droplet_analysis/main.py path/to/data/folder path/to/output/folder
+
+    With options (options can be in any order):
+        $ ./in_vitro_droplet_analysis/main.py path/to/data/folder path/to/output/folder --param1 input --param2 input
+
+
+## REQUIRED ARGUMENTS
+
+	path to data folder 
+	The data folder must contain subfolders of experiments, where each subfolder contains all the replicate .nd and .TIF files for that experiment
+	The data folder should ONLY contain data.
+	
+	path to output folder (e.g. /lab/solexa_young/scratch/output). Don't put the output folder within the data folder.
+
+    
+
+## OPTIONAL ARGUMENTS
+
+  -h, --help     show this help message and exit
+  --tm TM        Optional threshold multiplier. Defaults to 3. mean + std*tm
+  --r R          Area of subset circle to use in middle of droplet. Default 30
+                 px^2. Per droplet, --min_a supercedes --r
+  --min_a MIN_A  Optional threshold for minimum droplet area. Default 20 px^2
+  --max_a MAX_A  Optional threshold for max droplet area. Default is 500 px^2
+  --circ CIRC    Optional threshold for droplet circularity (defined 0.0-1.0).
+                 Default is 0.8
+  --s S          What channel to use for scaffolding. Defaults to standardized
+                 average of all channels.
+  --b B          Optional absolute value to use to subtract background.
+                 Default is 0.0.
+  --pr PR        Value to use for [C](in) to calculate partition ratio.
+                 Options are subset, mean, and max. Default is subset
+  --no-image     Flag to set if you do not want output images of the droplets
+                 saved to the output directory
+  --rand-bulk    Flag to calculate bulk by randomzing the image and taking the
+                 average intensity. NOT YET IMPLEMENTED
+  --bf           Flag to include DIC brightfield as the scaffold
+
+##### OUTPUT #####
+
+    The output will contain the following directories in the same directory as the metadata file:
+
+    /individual/
+        /droplet_images/        : This will include pictures (.PNG) of the called droplets
+                                  to manually verify and/or tweak parameters.
+
+        individual_output.xlsx  : This will contain all output data from individual droplets with unique IDs for each
+                                  droplet. Each sheet is a unique experiment/sample.
+
+        scatter plots           : If there are two channels, then there will be scatter plot outputs of the droplet
+                                  intensities in each channel plotted against each other.
+
+        box plots               : Box and dot plots of the partition ratios for all droplets for every experimental
+                                  condition for all channels
+
+        histogram plots         : Histograms of droplet areas for all experiments. Not on same scale.
+
+
+    output_analysis_parameters.txt  : A text file that shows the parameters used for the most recent run.
+                                      This file will be written over every analysis unless you change the name.
