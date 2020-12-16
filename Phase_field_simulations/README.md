@@ -19,7 +19,7 @@
 
 ### Documentation
 
-Navigate to **docs/build/html/index.html** and launch the file in browser to get user-friendly overview of the detailed documentation.
+Navigate to **docs/build/html/index.html** from previous commits and launch the file in browser to get user-friendly overview of the detailed documentation.
 
 ### Running the code
 
