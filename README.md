@@ -1,6 +1,6 @@
 # About
 
-This repository contains code related to the manuscript titled "RNA-mediated feedback control of transcriptional condensates".
+This repository contains code related to the manuscript titled "[RNA-mediated feedback control of transcriptional condensates](https://doi.org/10.1016/j.cell.2020.11.030)".
 
 ## Contents
 
